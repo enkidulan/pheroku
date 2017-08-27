@@ -33,7 +33,7 @@ migrate:
 
 serve:
 	@echo '===================================== serving web ======================================'
-	$(VENV)/bin/pserve ${CONFIG_FILE}
+	$(VENV)/bin/gunicorn --paste ${CONFIG_FILE} -b 127.0.0.1:${PORT}
 
 
 all: clean  build  migrate  serve
