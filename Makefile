@@ -36,7 +36,7 @@ serve:
 	$(VENV)/bin/pserve ${CONFIG_FILE}
 
 
-all: clean build migrate serve
+all: clean  build  migrate  serve
 	@echo '===================================== running web ======================================'
 
 
