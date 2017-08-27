@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 
 VENV?=.venv
-ENV_OPTINOS?=--system-site-packages
+ENV_OPTINOS?=
 CONFIG_FILE?=production.ini
 
 
@@ -43,4 +43,4 @@ all: clean test serve
 clean:
 	@echo '==================================== cleaning env ======================================'
 	rm $(VENV) -rf
-	rm pheroku.sqlite
+	rm *.sqlite -rf
