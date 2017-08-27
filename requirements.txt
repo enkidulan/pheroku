@@ -4,7 +4,7 @@ Jinja2==2.9.6
 Mako==1.0.7
 MarkupSafe==1.0
 PasteDeploy==1.5.2
--e git+git@github.com:enkidulan/pheroku.git@2a6727ac82a0f84df5daf7eacdab98474b17aea6#egg=pheroku
+-e .
 plaster==0.5
 plaster-pastedeploy==0.4.1
 Pygments==2.2.0
