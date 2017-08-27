@@ -1,1 +1,1 @@
-web: make migrate
+web: make
