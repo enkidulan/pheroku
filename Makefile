@@ -1,6 +1,5 @@
 .DEFAULT_GOAL := run
 
-PYTHON?=python3
 VENV?=.venv
 ENV_OPTINOS?=--system-site-packages
 CONFIG_FILE?=production.ini
@@ -8,7 +7,7 @@ CONFIG_FILE?=production.ini
 
 ensure-venv:
 	@echo '============================= creating virtual environmetn ============================='
-	[ -d $(VENV) ] || { virtualenv $(ENV_OPTINOS) -p $(PYTHON) $(VENV);}
+	[ -d $(VENV) ] || { python3 -m venv $(ENV_OPTINOS) $(VENV);}
 
 
 build-initial-dependencies:  ensure-venv
@@ -36,3 +35,8 @@ run: build migrate test
 	@echo '===================================== running web ======================================'
 	$(VENV)/bin/pserve ${CONFIG_FILE}
 
+
+clean:
+	@echo '==================================== cleaning env ======================================'
+	rm $(VENV) -rf
+	rm pheroku.sqlite
