@@ -20,13 +20,13 @@ build: build-initial-dependencies
 	$(VENV)/bin/pip install -e .
 
 
-test: build  migrate
+test:
 	@echo '================================ running project tests ================================='
 	$(VENV)/bin/pip install -e .[testing]
 	$(VENV)/bin/pytest
 
 
-migrate: build
+migrate:
 	@echo '================================ running project tests ================================='
 	$(VENV)/bin/initialize_pheroku_db ${CONFIG_FILE}
 
@@ -36,7 +36,7 @@ serve:
 	$(VENV)/bin/pserve ${CONFIG_FILE}
 
 
-all: clean test serve
+all: clean build migrate serve
 	@echo '===================================== running web ======================================'
 
 
