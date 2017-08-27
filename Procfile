@@ -1,2 +1,1 @@
-web: make serve
-release: make migrate
+web: make
