@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := run
+.DEFAULT_GOAL := all
 
 VENV?=.venv
 ENV_OPTINOS?=--system-site-packages
@@ -20,7 +20,7 @@ build: build-initial-dependencies
 	$(VENV)/bin/pip install -e .
 
 
-test: build
+test: build  migrate
 	@echo '================================ running project tests ================================='
 	$(VENV)/bin/pip install -e .[testing]
 	$(VENV)/bin/pytest
@@ -31,9 +31,13 @@ migrate: build
 	$(VENV)/bin/initialize_pheroku_db ${CONFIG_FILE}
 
 
-run: build migrate test
-	@echo '===================================== running web ======================================'
+serve:
+	@echo '===================================== serving web ======================================'
 	$(VENV)/bin/pserve ${CONFIG_FILE}
+
+
+all: clean test serve
+	@echo '===================================== running web ======================================'
 
 
 clean:
